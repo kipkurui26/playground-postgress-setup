@@ -106,16 +106,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = config("LANGUAGE_CODE")
-TIME_ZONE = config("TIME_ZONE")
-USE_I18N = config("USE_I18N", cast=bool)
-USE_TZ = config("USE_TZ", cast=bool)
 
+# Internationalization settings
+LANGUAGE_CODE="en-us"
+TIME_ZONE="UTC"
+USE_I18N=True
+USE_TZ=True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = config("STATIC_URL")
+# Static files settings
+STATIC_URL="static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
