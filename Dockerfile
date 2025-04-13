@@ -1,20 +1,27 @@
-# Base Image
 FROM python:3.13-alpine
 
-# Set the working directory
+# Set environment variables to prevent Python from writing pyc files and buffering stdout/stderr
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
 WORKDIR /app
 
-# Copy requirements.txt
-COPY requirements.txt ./
+# Install build dependencies
+RUN apk add --no-cache gcc musl-dev postgresql-dev
 
-# Install dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 8000
+# Copy the entrypoint script
+COPY entrypoint.sh /app/entrypoint.sh
 
-# Command to run the application
+# Make the script executable
+RUN chmod +x /app/entrypoint.sh
+
+# Set the entrypoint to the script
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+# Command to start the Django application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
