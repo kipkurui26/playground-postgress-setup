@@ -30,7 +30,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/playground-postgres-setup.git
+git clone https://github.com/kipkurui26/playground-postgress-setup.git
 cd playground-postgres-setup
 ```
 
